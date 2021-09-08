@@ -1,35 +1,25 @@
-import './App.css';
 import React, { useState } from 'react';
 
-function App() {
-  const [num, setNum] = useState(1);
+export default function Counter() {
+  const [num, setNum] = useState(0);
 
-  const onChnage = (e) => {
-    console.log(e.target.value);
-    console.log('target ===> ', Object.keys(e.target));
-
+  const onChange = (e) => {
     setNum(e.target.value);
   };
 
-  const handlePClick = (e) => {
+  const handlePlus = (e) => {
+    console.log(`야호`);
     setNum(num + 1);
   };
-  const handleMClick = (e) => {
+  const handleMinus = (e) => {
     setNum(num - 1);
   };
 
   return (
     <div>
-      <input className="inPut" onChange={onChnage} value={num} />
-
-      <button className="plus" onClick={handlePClick}>
-        +
-      </button>
-      <button className="minus" onClick={handleMClick}>
-        -
-      </button>
+      <input onChange={onChange} value={num} />
+      <button onClick={handlePlus}>+</button>
+      <button onClick={handleMinus}>-</button>
     </div>
   );
 }
-
-export default App;
