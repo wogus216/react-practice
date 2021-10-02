@@ -12,6 +12,10 @@
   height: 500px;
 }
 
+li {
+  list-style: none;
+}
+
 .inputText {
   width: 300px;
   border: none;
@@ -43,6 +47,29 @@
 
 .App-link {
   color: #61dafb;
+}
+body {
+  background-color: #f2f2f2;
+  font-size: 20px;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0px auto;
+  width: 450px;
+  height: 600px;
+  background: white;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.push {
+  width: 50%;
+  font-size: 18px;
+  border-radius: 4px;
+  outline: none;
+  margin: 0px auto;
 }
 
 @keyframes App-logo-spin {
