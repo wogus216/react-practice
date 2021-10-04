@@ -1,5 +1,5 @@
 /* eslint-disable-next-line  */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ToDoList from './ToDoList';
 import styled from 'styled-components';
 
@@ -12,48 +12,68 @@ const Circle = styled.button`
   height: 80px;
   border: none;
   position: absolute;
-  left: 45%;
-  top: 63%;
+  left: 48%;
+  top: 60%;
 `;
 
 export default function ToDo() {
-  const [Todo, setTodo] = useState(ToDoList);
-  const [input, setInput] = useState({
-    id: '',
+  const [TodoList, setTodoList] = useState(ToDoList);
+  const [value, setValue] = useState('');
+  const [inputs, setInputs] = useState({
     content: '',
   });
-  const { id, content } = input;
+  const { content } = inputs;
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+  const nextId = useRef(4);
+
+  const onCreate = () => {
+    const Todo = {
+      id: nextId.current,
+      content: value,
+    };
+    setTodoList([...TodoList, Todo]);
+    setInputs({
+      content: '',
+    });
+    setValue('');
+    nextId.current += 1;
+  };
+
   const [appear, setAppear] = useState(false);
+
   return (
     <div className="wrap">
       <h1>ToDoList</h1>
-      {Todo.map((con, i) => {
+      {TodoList.map((con, i) => {
         return (
-          <div>
-            <h3>{Todo[i].content}</h3>
+          <div key={i}>
+            <h3
+              onClick={() => {
+                let newTodoList = [...TodoList];
+                newTodoList[i].id = '';
+                newTodoList[i].content = '';
+                setTodoList(newTodoList);
+                console.log(TodoList);
+              }}
+            >
+              {TodoList[i].content}
+            </h3>
           </div>
         );
       })}
-      {input}
+
       {appear === true ? (
         <div>
           <input
             className="push"
-            onChange={(e) => {
-              setInput({
-                id: 4,
-                content: '되나',
-              });
-            }}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                let addTodo = [...Todo, input];
-                console.log(addTodo);
-                setTodo(addTodo);
-              }
-            }}
-            placeholder="할일을 입력 후 enter를 누르세요"
+            content={content}
+            onChange={onChange}
+            placeholder="할일을 입력"
+            value={value}
           />
+          <button onClick={onCreate}>등록</button>
         </div>
       ) : null}
       <Circle>

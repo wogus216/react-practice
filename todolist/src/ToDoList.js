@@ -11,4 +11,8 @@ export default [
     id: 2,
     content: '꾸준히 하기',
   },
+  {
+    id: 3,
+    content: '운동 하기',
+  },
 ];
