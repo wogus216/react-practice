@@ -1,10 +1,10 @@
 import "./App.css";
 import { Component } from "react";
 
-import FEventPractice from "./FEventPractice";
+import ValidationSample from "./components/ValidationSample";
 class App extends Component {
   render() {
-    return <FEventPractice />;
+    return <ValidationSample />;
   }
 }
 
