@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import Average from "./Components/Average";
+import Counter from "./Components/Counter";
 import Info from "./Components/Info";
 
 const App = () => {
@@ -14,7 +16,7 @@ const App = () => {
         {visible ? "숨기기" : "보이기"}
       </button>
       <hr />
-      {visible && <Info />}
+      {visible && <Average />}
     </div>
   );
 };
