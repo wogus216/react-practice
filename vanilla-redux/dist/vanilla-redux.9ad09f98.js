@@ -117,7 +117,11 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
+<<<<<<< HEAD
 })({"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+=======
+})({"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+>>>>>>> refs/remotes/origin/main
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -149,7 +153,11 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
+<<<<<<< HEAD
 },{}],"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+=======
+},{}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+>>>>>>> refs/remotes/origin/main
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +192,20 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
+<<<<<<< HEAD
 },{"./bundle-url":"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
+=======
+},{"./bundle-url":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
+>>>>>>> refs/remotes/origin/main
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+<<<<<<< HEAD
 },{"_css_loader":"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+=======
+},{"_css_loader":"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+>>>>>>> refs/remotes/origin/main
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +233,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "49476" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56440" + '/');
+>>>>>>> refs/remotes/origin/main
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -393,5 +413,9 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
+<<<<<<< HEAD
 },{}]},{},["../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+=======
+},{}]},{},["../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+>>>>>>> refs/remotes/origin/main
 //# sourceMappingURL=/vanilla-redux.9ad09f98.js.map

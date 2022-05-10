@@ -6,7 +6,11 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .toggle .active {
+=======
+div:active {
+>>>>>>> refs/remotes/origin/main
   background: yellow;
 }
 

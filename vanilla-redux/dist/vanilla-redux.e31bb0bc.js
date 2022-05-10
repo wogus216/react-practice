@@ -188,7 +188,10 @@ exports.bindActionCreators = bindActionCreators;
 exports.combineReducers = combineReducers;
 exports.compose = compose;
 exports.createStore = createStore;
+<<<<<<< HEAD
 exports.legacy_createStore = void 0;
+=======
+>>>>>>> refs/remotes/origin/main
 
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread2"));
 
@@ -305,6 +308,7 @@ function kindOf(val) {
   return typeOfVal;
 }
 /**
+<<<<<<< HEAD
  * @deprecated
  *
  * **We recommend using the `configureStore` method
@@ -328,6 +332,31 @@ function kindOf(val) {
  *
  * `import { legacy_createStore as createStore} from 'redux'`
  *
+=======
+ * Creates a Redux store that holds the state tree.
+ * The only way to change the data in the store is to call `dispatch()` on it.
+ *
+ * There should only be a single store in your app. To specify how different
+ * parts of the state tree respond to actions, you may combine several reducers
+ * into a single reducer function by using `combineReducers`.
+ *
+ * @param {Function} reducer A function that returns the next state tree, given
+ * the current state tree and the action to handle.
+ *
+ * @param {any} [preloadedState] The initial state. You may optionally specify it
+ * to hydrate the state from the server in universal apps, or to restore a
+ * previously serialized user session.
+ * If you use `combineReducers` to produce the root reducer function, this must be
+ * an object with the same shape as `combineReducers` keys.
+ *
+ * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+ * to enhance the store with third-party capabilities such as middleware,
+ * time travel, persistence, etc. The only store enhancer that ships with Redux
+ * is `applyMiddleware()`.
+ *
+ * @returns {Store} A Redux store that lets you read the state, dispatch actions
+ * and subscribe to changes.
+>>>>>>> refs/remotes/origin/main
  */
 
 
@@ -579,6 +608,7 @@ function createStore(reducer, preloadedState, enhancer) {
   }, _ref2[$$observable] = observable, _ref2;
 }
 /**
+<<<<<<< HEAD
  * Creates a Redux store that holds the state tree.
  *
  * **We recommend using `configureStore` from the
@@ -612,13 +642,18 @@ function createStore(reducer, preloadedState, enhancer) {
 
 var legacy_createStore = createStore;
 /**
+=======
+>>>>>>> refs/remotes/origin/main
  * Prints a warning in the console if it exists.
  *
  * @param {String} message The warning message.
  * @returns {void}
  */
 
+<<<<<<< HEAD
 exports.legacy_createStore = legacy_createStore;
+=======
+>>>>>>> refs/remotes/origin/main
 
 function warning(message) {
   /* eslint-disable no-console */
@@ -924,6 +959,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+<<<<<<< HEAD
 var divToggle = document.querySelector('.toggle');
 var counter = document.querySelector('h1');
 var btnIncrease = document.querySelector('#increase');
@@ -932,6 +968,16 @@ var TOGGLE_SWITCH = 'TOGGLE_SWITCH';
 var INCREASE = 'INCREASE';
 var DECREASE = 'DECREASE';
 var store = (0, _redux.createStore)(reducer);
+=======
+var divToggle = document.querySelector(".toggle");
+var counter = document.querySelector("h1");
+var btnIncrease = document.querySelector("#increase");
+var btnDecrease = document.querySelector("#decrease"); // 액션이름을 추가
+
+var TOGGLE_SWITCH = "TOGGLE_SWITCH";
+var INCREASE = "INCREASE";
+var DECREASE = "DECREASE"; // 액션을 만듦
+>>>>>>> refs/remotes/origin/main
 
 var toggleSwitch = function toggleSwitch() {
   return {
@@ -950,28 +996,54 @@ var decrease = function decrease() {
   return {
     type: DECREASE
   };
+<<<<<<< HEAD
 };
+=======
+}; // 초기상태
+
+>>>>>>> refs/remotes/origin/main
 
 var initialState = {
   toggle: false,
   counter: 0
+<<<<<<< HEAD
 }; //state가 undefined일 때는 initialState를 기본값으로 사용
+=======
+}; // state가 undefined 일 때는 initialState를 기본값을 사용
+>>>>>>> refs/remotes/origin/main
 
 function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+<<<<<<< HEAD
 
   //action.type에 따라 다른 작업을 처리함
   switch (action.type) {
     case TOGGLE_SWITCH:
       return _objectSpread(_objectSpread({}, state), {}, {
         // 불변성 유지를 해 주어야 합니다.
+=======
+  console.log(action); // action.type에 따라 다른 작업을 처리함
+
+  switch (action.type) {
+    case TOGGLE_SWITCH:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        // 불변성 융지
+>>>>>>> refs/remotes/origin/main
         toggle: !state.toggle
       });
 
     case INCREASE:
+<<<<<<< HEAD
       return _objectSpread(_objectSpread({}, state), {}, {
         counter: state.counter + action.difference
+=======
+      console.log("일로 안들어오나?");
+      return _objectSpread(_objectSpread({}, state), {}, {
+        // 불변성 융지
+        counter: state.counter + action.difference // 이건 뭐지?
+
+>>>>>>> refs/remotes/origin/main
       });
 
     case DECREASE:
@@ -984,6 +1056,7 @@ function reducer() {
   }
 }
 
+<<<<<<< HEAD
 var render = function render() {
   var state = store.getState(); //현재 상태를 불러옵니다.
   //토글처리
@@ -993,6 +1066,19 @@ var render = function render() {
   } else {
     divToggle.classList.remove('active');
   } //카운터 처리
+=======
+var store = (0, _redux.createStore)(reducer);
+
+var render = function render() {
+  var state = store.getState(); // 현재 상태를 불러옵니다
+  // 토글 처리
+
+  if (state.toggle) {
+    divToggle.classList.add("active");
+  } else {
+    divToggle.classList.remove("active");
+  } // 카운터 처리
+>>>>>>> refs/remotes/origin/main
 
 
   counter.innerText = state.counter;
@@ -1001,6 +1087,7 @@ var render = function render() {
 render();
 store.subscribe(render);
 
+<<<<<<< HEAD
 divToggle.onClick = function () {
   store.dispatch(toggleSwitch());
 };
@@ -1013,6 +1100,20 @@ btnDecrease.onClick = function () {
   store.dispatch(decrease());
 };
 },{"redux":"node_modules/redux/es/redux.js"}],"../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+=======
+divToggle.onclick = function () {
+  store.dispatch(toggleSwitch());
+};
+
+btnIncrease.onclick = function () {
+  store.dispatch(increase(1));
+};
+
+btnDecrease.onclick = function () {
+  store.dispatch(decrease());
+};
+},{"redux":"node_modules/redux/es/redux.js"}],"../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+>>>>>>> refs/remotes/origin/main
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1040,7 +1141,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "49476" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56440" + '/');
+>>>>>>> refs/remotes/origin/main
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1216,5 +1321,9 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
+<<<<<<< HEAD
 },{}]},{},["../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+=======
+},{}]},{},["../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+>>>>>>> refs/remotes/origin/main
 //# sourceMappingURL=/vanilla-redux.e31bb0bc.js.map

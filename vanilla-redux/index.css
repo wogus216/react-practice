@@ -6,6 +6,6 @@
   box-sizing: border-box;
 }
 
-.toggle .active {
+div:active {
   background: yellow;
 }

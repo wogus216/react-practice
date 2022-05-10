@@ -72,6 +72,10 @@ body {
   margin: 0px auto;
 }
 
+.text {
+  color: rgba(216, 205, 255, 0.658);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,33 +1,40 @@
-import { createStore } from 'redux';
-const divToggle = document.querySelector('.toggle');
-const counter = document.querySelector('h1');
-const btnIncrease = document.querySelector('#increase');
-const btnDecrease = document.querySelector('#decrease');
-const TOGGLE_SWITCH = 'TOGGLE_SWITCH';
-const INCREASE = 'INCREASE';
-const DECREASE = 'DECREASE';
-const store = createStore(reducer);
+import { createStore } from "redux";
+const divToggle = document.querySelector(".toggle");
+const counter = document.querySelector("h1");
+const btnIncrease = document.querySelector("#increase");
+const btnDecrease = document.querySelector("#decrease");
+
+// 액션이름을 추가
+const TOGGLE_SWITCH = "TOGGLE_SWITCH";
+const INCREASE = "INCREASE";
+const DECREASE = "DECREASE";
+
+// 액션을 만듦
 const toggleSwitch = () => ({ type: TOGGLE_SWITCH });
 const increase = (difference) => ({ type: INCREASE, difference });
 const decrease = () => ({ type: DECREASE });
+
+// 초기상태
 const initialState = {
   toggle: false,
   counter: 0,
 };
 
-//state가 undefined일 때는 initialState를 기본값으로 사용
+// state가 undefined 일 때는 initialState를 기본값을 사용
 function reducer(state = initialState, action) {
-  //action.type에 따라 다른 작업을 처리함
+  console.log(action);
+  // action.type에 따라 다른 작업을 처리함
   switch (action.type) {
     case TOGGLE_SWITCH:
       return {
-        ...state, // 불변성 유지를 해 주어야 합니다.
+        ...state, // 불변성 융지
         toggle: !state.toggle,
       };
     case INCREASE:
+      console.log("일로 안들어오나?");
       return {
-        ...state,
-        counter: state.counter + action.difference,
+        ...state, // 불변성 융지
+        counter: state.counter + action.difference, // 이건 뭐지?
       };
     case DECREASE:
       return {
@@ -39,27 +46,29 @@ function reducer(state = initialState, action) {
   }
 }
 
+const store = createStore(reducer);
+
 const render = () => {
-  const state = store.getState(); //현재 상태를 불러옵니다.
-  //토글처리
+  const state = store.getState(); // 현재 상태를 불러옵니다
+  // 토글 처리
   if (state.toggle) {
-    divToggle.classList.add('active');
+    divToggle.classList.add("active");
   } else {
-    divToggle.classList.remove('active');
+    divToggle.classList.remove("active");
   }
-  //카운터 처리
+  // 카운터 처리
   counter.innerText = state.counter;
 };
 
 render();
 store.subscribe(render);
 
-divToggle.onClick = () => {
+divToggle.onclick = () => {
   store.dispatch(toggleSwitch());
 };
-btnIncrease.onClick = () => {
-  store.dispatch(increase());
+btnIncrease.onclick = () => {
+  store.dispatch(increase(1));
 };
-btnDecrease.onClick = () => {
+btnDecrease.onclick = () => {
   store.dispatch(decrease());
 };

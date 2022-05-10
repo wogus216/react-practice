@@ -10,6 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "redux": "^4.2.0"
+=======
+    "redux": "^4.1.2"
+>>>>>>> refs/remotes/origin/main
   }
 }

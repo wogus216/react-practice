@@ -17,6 +17,12 @@ const Circle = styled.button`
 `;
 
 export default function ToDo() {
+  const today = new Date();
+  const date = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
   const [TodoList, setTodoList] = useState(ToDoList);
   const [value, setValue] = useState('');
   const [inputs, setInputs] = useState({
@@ -39,23 +45,24 @@ export default function ToDo() {
     });
     setValue('');
     nextId.current += 1;
+    console.log(ToDoList);
   };
 
   const [appear, setAppear] = useState(false);
 
   return (
     <div className="wrap">
-      <h1>ToDoList</h1>
+      <h1>{date}</h1>
+      <h2>ToDoList</h2>
       {TodoList.map((con, i) => {
+        console.log(TodoList);
         return (
-          <div key={i}>
+          <div className="text" key={i}>
             <h3
               onClick={() => {
                 let newTodoList = [...TodoList];
-                newTodoList[i].id = '';
-                newTodoList[i].content = '';
+                newTodoList.splice(i, 1);
                 setTodoList(newTodoList);
-                console.log(TodoList);
               }}
             >
               {TodoList[i].content}
@@ -63,14 +70,13 @@ export default function ToDo() {
           </div>
         );
       })}
-
       {appear === true ? (
         <div>
           <input
             className="push"
             content={content}
             onChange={onChange}
-            placeholder="할일을 입력"
+            placeholder="할일 입력"
             value={value}
           />
           <button onClick={onCreate}>등록</button>
