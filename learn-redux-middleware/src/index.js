@@ -6,9 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { applyMiddleware, legacy_createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
-import loggerMiddleware from './lib /loggerMiddleware';
+// import loggerMiddleware from './lib /loggerMiddleware';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
-const store = legacy_createStore(rootReducer, applyMiddleware(loggerMiddleware));
+const logger = createLogger();
+const store = legacy_createStore(rootReducer, applyMiddleware(logger, thunk));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
