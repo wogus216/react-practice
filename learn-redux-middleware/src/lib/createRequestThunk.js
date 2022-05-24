@@ -1,9 +1,11 @@
+import { call, put } from 'redux-saga/effects';
 import { finishLoading, startLoading } from '../modules/loading';
 
 export default function createRequestThunk(type, request) {
   //성공 및 실패 액션 타입을 정의합니다.
   const SUCCESS = `${type}_SUCCESS`;
   const FAILURE = `${type}_FAILURE`;
+
   return (params) => async (dispatch) => {
     dispatch({ type }); //시작 됨
     dispatch(startLoading(type));
