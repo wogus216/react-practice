@@ -7,7 +7,7 @@ import * as authAPI from '../lib/api/auth';
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
-const [REGISTER, REGISTER_SUCCESS, REACTERS_FAILURE] = createRequestActionTypes('auth/REGISTER');
+const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes('auth/REGISTER');
 
 const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes('auth/LOGIN');
 
@@ -67,9 +67,9 @@ const auth = handleActions(
     }),
 
     //회원가입 실패
-    [REACTERS_FAILURE]: (state, { payload: error }) => ({
+    [REGISTER_FAILURE]: (state, { payload: error }) => ({
       ...state,
-      authError: null,
+      authError: error,
     }),
     //로그인 성공
     [LOGIN_SUCCESS]: (state, { payload: auth }) => ({
