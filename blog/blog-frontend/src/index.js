@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from '../node_modules/react-router-dom/index';
 import { Provider } from '../node_modules/react-redux/es/exports';
-import { legacy_createStore } from '../node_modules/@reduxjs/toolkit/dist/index';
+import { applyMiddleware, legacy_createStore } from '../node_modules/@reduxjs/toolkit/dist/index';
 import { composeWithDevTools } from '../node_modules/redux-devtools-extension/index';
-import rootReducer from './modules/index';
+import rootReducer, { rootSaga } from './modules/index';
+import createSagaMiddleware from 'redux-saga';
 
-const store = legacy_createStore(rootReducer, composeWithDevTools());
+const sagaMiddleware = createSagaMiddleware();
+const store = legacy_createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+sagaMiddleware.run(rootSaga);
 root.render(
   <Provider store={store}>
     <React.StrictMode>

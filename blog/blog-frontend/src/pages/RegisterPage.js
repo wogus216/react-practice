@@ -1,4 +1,4 @@
-import AuthForm from '../components/auth/AuthForm';
+// import AuthForm from '../components/auth/AuthForm';
 import AuthTempplate from '../components/auth/AuthTemplate';
 import RegisterForm from '../containers/auth/RegisterForm';
 
