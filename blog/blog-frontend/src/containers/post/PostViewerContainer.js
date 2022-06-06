@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { readPost, unloadPost } from '../../modules/post';
 import PostViewer from '../../components/post/PostViewer';
+import { withRouter } from 'react-router-dom';
 
-const PostViewerContainer = () => {
+const PostViewerContainer = ({ match }) => {
+  console.log('match', match);
   // 처음 마운트될 때 포스트 읽기 API 요청
-  const { postId } = useParams();
+  const { postId } = match.params;
   const dispatch = useDispatch();
   const { post, error, loading } = useSelector(({ post, loading }) => ({
     post: post.post,
@@ -25,4 +26,4 @@ const PostViewerContainer = () => {
   return <PostViewer post={post} loading={loading} error={error} />;
 };
 
-export default PostViewerContainer;
+export default withRouter(PostViewerContainer);
