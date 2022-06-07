@@ -1,6 +1,6 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import palette from '../../lib/styles/palette';
 
 const buttonStyle = css`
@@ -8,7 +8,7 @@ const buttonStyle = css`
   border-radius: 4px;
   font-size: 1rem;
   font-weight: bold;
-  padding: 0.25rem;
+  padding: 0.25rem 1rem;
   color: white;
   outline: none;
   cursor: pointer;
@@ -18,7 +18,7 @@ const buttonStyle = css`
     background: ${palette.gray[6]};
   }
 
-  ${(props) =>
+  ${props =>
     props.fullWidth &&
     css`
       padding-top: 0.75rem;
@@ -27,7 +27,7 @@ const buttonStyle = css`
       font-size: 1.125rem;
     `}
 
-  ${(props) =>
+  ${props =>
     props.cyan &&
     css`
       background: ${palette.cyan[5]};
@@ -35,6 +35,12 @@ const buttonStyle = css`
         background: ${palette.cyan[4]};
       }
     `}
+
+    &:disabled {
+    background: ${palette.gray[3]};
+    color: ${palette.gray[5]};
+    cursor: not-allowed;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -45,21 +51,12 @@ const StyledLink = styled(Link)`
   ${buttonStyle}
 `;
 
-// const Button = ({ to, history, ...rest }) => {
-//   const onClick = (e) => {
-//     //to가 있다면 to로 페이지 이동
-//     if (to) {
-//       history.push(to);
-//     }
-//     if (rest.onClick) {
-//       rest.onClick(e);
-//     }
-//   };
-//   return <StyledButton {...rest} onClick={onClick} />;
-// };
-
-const Button = (props) => {
-  return props.to ? <StyledLink {...props} cyan={props.cyan ? 1 : 0} /> : <StyledButton {...props} />;
+const Button = props => {
+  return props.to ? (
+    <StyledLink {...props} cyan={props.cyan ? 1 : 0} />
+  ) : (
+    <StyledButton {...props} />
+  );
 };
 
 export default Button;

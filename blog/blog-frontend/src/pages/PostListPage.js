@@ -1,12 +1,16 @@
-import PostList from '../components/posts/PostList';
+import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
+import PostListContainer from '../containers/posts/PostListContainer';
+import PaginationContainer from '../containers/posts/PaginationContainer';
 
 const PostListPage = () => {
   return (
-    <div>
+    <>
       <HeaderContainer />
-      <PostList />
-    </div>
+      <PostListContainer />
+      <PaginationContainer />
+    </>
   );
 };
+
 export default PostListPage;

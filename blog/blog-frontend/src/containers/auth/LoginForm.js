@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { changeField, initializeForm, login } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
-import { withRouter } from 'react-router-dom';
 import { check } from '../../modules/user';
 
-const LoginForm = ({ history }) => {
+const LoginForm = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
@@ -14,7 +15,7 @@ const LoginForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
-  //인풋 이벤트 핸들러
+  // 인풋 변경 이벤트 핸들러
   const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(
@@ -33,7 +34,7 @@ const LoginForm = ({ history }) => {
     dispatch(login({ username, password }));
   };
 
-  //컴포넌트가 처음 렌더링될 때 form를 초기화함
+  // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm('login'));
   }, [dispatch]);
@@ -53,16 +54,24 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push('/');
+      navigate('/');
       try {
         localStorage.setItem('user', JSON.stringify(user));
       } catch (e) {
         console.log('localStorage is not working');
       }
     }
-  }, [history, user]);
+  }, [navigate, user]);
 
-  return <AuthForm type="login" form={form} onChange={onChange} onSubmit={onSubmit} error={error} />;
+  return (
+    <AuthForm
+      type="login"
+      form={form}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      error={error}
+    />
+  );
 };
 
-export default withRouter(LoginForm);
+export default LoginForm;
