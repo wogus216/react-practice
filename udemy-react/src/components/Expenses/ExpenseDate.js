@@ -2,9 +2,12 @@ import React from 'react';
 import './ExpenseDate.css';
 
 export default function ExpenseDate(props) {
-  const month = props.date.toLocaleString('en-us', { month: 'long' });
-  const day = props.date.toLocaleString('en-us', { day: '2-digit' });
-  const year = props.date.getFullYear();
+  console.log('props', props);
+  let changeDate = new Date(props.date);
+  console.log('changeDate', changeDate);
+  const month = changeDate.toLocaleString('en-us', { month: 'long' });
+  const day = changeDate.toLocaleString('en-us', { day: '2-digit' });
+  const year = changeDate.getFullYear();
   return (
     <div className="expense-date">
       <div className="expense-date__month">{month}</div>
