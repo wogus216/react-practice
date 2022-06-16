@@ -18,25 +18,27 @@ const Login = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    const indentifier = setTimeout(() => {
-      console.log('Checking form ');
-      //디바운싱
-      setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
-    }, 500);
-    //클린업은 사이드 이펙트 함수 실행 전까지는 실행 되지 않음
-    return () => {
-      console.log('clean up');
-      clearTimeout(indentifier);
-    };
-  }, [enteredEmail, enteredPassword]);
+  // useEffect(() => {
+  //   const indentifier = setTimeout(() => {
+  //     console.log('Checking form ');
+  //     //디바운싱
+  //     setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
+  //   }, 500);
+  //   //클린업은 사이드 이펙트 함수 실행 전까지는 실행 되지 않음
+  //   return () => {
+  //     console.log('clean up');
+  //     clearTimeout(indentifier);
+  //   };
+  // }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
+    setFormIsValid(event.target.value.includes('@') && enteredPassword.trim().length > 6);
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
+    setFormIsValid(event.target.value.includes('@') && event.target.value.trim().length > 6);
   };
 
   const validateEmailHandler = () => {
