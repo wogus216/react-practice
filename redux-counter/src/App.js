@@ -1,13 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import Counter from './component/Counter';
+import Header from './component/Header';
+import Auth from './component/Auth';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const auth = useSelector((state) => state.auth.isAuthenticated);
+  useSelector((state) => console.log('state', state));
   return (
     <div className="App">
-      <div>
-        <Counter />
-      </div>
+      <h2></h2>
+      <Header />
+      {!auth && <Auth />}
+
+      <Counter />
     </div>
   );
 }
