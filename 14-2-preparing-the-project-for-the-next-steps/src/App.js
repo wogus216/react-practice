@@ -43,18 +43,29 @@ function App() {
     setIsLoading(false);
   }, []);
 
+  const addMovieHandler = useCallback(async (movie) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await axios.post(
+        'https://react-http-62af5-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json',
+        movie
+      );
+      const data = await response.data;
+      console.log('postdata', data);
+
+      alert('전송 성공');
+      fetchMoviesHandler();
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
+    console.log('fetchHandler 동작');
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
-
-  const addMovieHandler = useCallback(async (movie) => {
-    const response = await axios.post(
-      'https://react-http-62af5-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json',
-      movie
-    );
-    const data = await response.data;
-    console.log(data);
-  }, []);
 
   let content = <p>Found no movies.</p>;
 
