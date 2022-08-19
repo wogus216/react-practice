@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import MoviesList from './components/MoviesList';
 import AddMovie from './components/AddMovie';
 import './App.css';
+import axios from 'axios';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -13,14 +14,16 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(
+      const response = await axios.get(
         'https://react-http-62af5-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json'
       );
-      if (!response.ok) {
+      if (response.statusText !== 'OK') {
         throw new Error('Something went wrong!');
       }
 
-      const data = await response.json();
+      console.log('response', response);
+      const data = await response.data;
+      console.log('data', data);
 
       const loadedMoveis = [];
 
@@ -44,20 +47,14 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
-  async function addMovieHandler(movie) {
-    const response = await fetch(
+  const addMovieHandler = useCallback(async (movie) => {
+    const response = await axios.post(
       'https://react-http-62af5-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json',
-      {
-        method: 'POST',
-        body: JSON.stringify(movie),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      movie
     );
-    const data = await response.json();
+    const data = await response.data;
     console.log(data);
-  }
+  }, []);
 
   let content = <p>Found no movies.</p>;
 
